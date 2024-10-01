@@ -1,2 +1,9 @@
-/Users/mac/Documents/GitHub/EmployTracker/src/main/java/org/example/employtracker/HelloServlet.java
-/Users/mac/Documents/GitHub/EmployTracker/src/main/java/org/example/employtracker/model/Employee.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/Main.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/config/checkConnection.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/controller/HelloServlet.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/dao/EmployeeDao.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/dao/impl/EmployeeDaoImpl.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/model/Employee.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/service/EmployeeService.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/service/impl/EmployeeServiceImpl.java
+/Users/mac/Documents/GitHub/EmployTracker_app/src/main/java/org/example/employtracker/util/HibernateUtil.java
