@@ -69,5 +69,11 @@ public class EmployeeController extends HttpServlet {
       response.sendRedirect("employee?action=list");
    }
 
+   private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      int id = Integer.parseInt(request.getParameter("id"));
+      employeeService.deleteEmployee(id);
+      response.sendRedirect("employee?action=list");
+   }
+
 
 }
