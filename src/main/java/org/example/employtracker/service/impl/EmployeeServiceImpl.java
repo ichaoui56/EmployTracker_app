@@ -12,8 +12,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         this.employeeDao = employeeDao;
     }
 
+    @Override
     public void addEmployee(Employee employee){
         employeeDao.insertEmployee(employee);
     }
+
 
 }

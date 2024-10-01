@@ -24,7 +24,6 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <!-- Specify annotated classes -->
-        <mapping class="org.example.employtracker.model.Employee"/>
+        <mapping resource="Employee.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
