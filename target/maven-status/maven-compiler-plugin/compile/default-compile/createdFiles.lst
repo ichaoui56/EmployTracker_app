@@ -1,9 +1,7 @@
-org/example/employtracker/dao/impl/EmployeeDaoImpl.class
-org/example/employtracker/service/EmployeeService.class
-org/example/employtracker/Main.class
-org/example/employtracker/controller/HelloServlet.class
 org/example/employtracker/util/HibernateUtil.class
-org/example/employtracker/dao/EmployeeDao.class
+org/example/employtracker/dao/impl/EmployeeDaoImpl.class
+org/example/employtracker/dao/IEmployeeDao.class
+org/example/employtracker/service/IEmployeeService.class
 org/example/employtracker/model/Employee.class
-org/example/employtracker/config/checkConnection.class
+org/example/employtracker/controller/EmployeeController.class
 org/example/employtracker/service/impl/EmployeeServiceImpl.class
