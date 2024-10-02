@@ -10,6 +10,7 @@ import org.example.employtracker.service.IEmployeeService;
 import org.example.employtracker.service.impl.EmployeeServiceImpl;
 
 import java.io.IOException;
+import java.util.List;
 
 public class EmployeeController extends HttpServlet {
    private IEmployeeDao employeeDao;
@@ -28,6 +29,8 @@ public class EmployeeController extends HttpServlet {
          case "showForm":
             showEmployeeForm(request, response);
             break;
+         case "showEmployees":
+            listEmployees(request, response);
          default:
             break;
       }
@@ -75,5 +78,11 @@ public class EmployeeController extends HttpServlet {
       response.sendRedirect("employee?action=list");
    }
 
-
+   private void listEmployees(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      List<Employee> employees = employeeService.getAllEmployees();
+      request.setAttribute("employees", employees);
+      RequestDispatcher dispatcher = request.getRequestDispatcher("listEmployees.jsp");
+      dispatcher.forward(request, response);
+      System.out.println(employees);
+   }
 }
