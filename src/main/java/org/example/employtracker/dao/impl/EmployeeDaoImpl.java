@@ -60,4 +60,38 @@ public class EmployeeDaoImpl implements IEmployeeDao {
         }
         return employees;
     }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        Transaction transaction = null;
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(employee);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Employee selectEmployeeById(int id) {
+        Transaction transaction = null;
+        Employee employee = null;
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            employee = session.get(Employee.class, id);
+            transaction.commit();
+        }catch(Exception e) {
+            if(transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return employee;
+    }
 }
