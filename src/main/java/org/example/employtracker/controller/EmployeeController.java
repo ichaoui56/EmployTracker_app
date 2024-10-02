@@ -31,7 +31,12 @@ public class EmployeeController extends HttpServlet {
             break;
          case "showEmployees":
             listEmployees(request, response);
+            break;
+         case "edit":
+            showEditForm(request, response);
+            break;
          default:
+            response.sendRedirect("employee?action=showEmployees");
             break;
       }
    }
@@ -48,7 +53,11 @@ public class EmployeeController extends HttpServlet {
          case "delete":
             deleteEmployee(request, response);
             break;
+         case "update":
+            updateEmployee(request, response);
+            break;
          default:
+            response.sendRedirect("employee?action=showEmployees");
             break;
       }
    }
@@ -56,6 +65,14 @@ public class EmployeeController extends HttpServlet {
    private void showEmployeeForm(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
       RequestDispatcher dispatcher = request.getRequestDispatcher("view/addForm.jsp");
+      dispatcher.forward(request, response);
+   }
+
+   private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      int id = Integer.parseInt(request.getParameter("id"));
+      Employee existingEmployee = employeeService.getEmployeeById(id);
+      request.setAttribute("employee", existingEmployee);
+      RequestDispatcher dispatcher = request.getRequestDispatcher("editForm.jsp");
       dispatcher.forward(request, response);
    }
 
@@ -69,13 +86,13 @@ public class EmployeeController extends HttpServlet {
       Employee employee = new Employee(name, email, phoneNumber, department, salary);
       employeeService.addEmployee(employee);
 
-      response.sendRedirect("employee?action=list");
+      response.sendRedirect("employee?action=showEmployees");
    }
 
    private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
       int id = Integer.parseInt(request.getParameter("id"));
       employeeService.deleteEmployee(id);
-      response.sendRedirect("employee?action=list");
+      response.sendRedirect("employee?action=showEmployees");
    }
 
    private void listEmployees(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -84,5 +101,19 @@ public class EmployeeController extends HttpServlet {
       RequestDispatcher dispatcher = request.getRequestDispatcher("listEmployees.jsp");
       dispatcher.forward(request, response);
       System.out.println(employees);
+   }
+
+   private void updateEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      int id = Integer.parseInt(request.getParameter("id"));
+      String name = request.getParameter("name");
+      String email = request.getParameter("email");
+      String phoneNumber = request.getParameter("phone_number");
+      String department = request.getParameter("department");
+      Double salary = Double.valueOf(request.getParameter("salary"));
+
+      Employee employee = new Employee(id, name, email, phoneNumber, department, salary);
+      employeeService.updateEmployee(employee);
+
+      response.sendRedirect("employee?action=showEmployees");
    }
 }

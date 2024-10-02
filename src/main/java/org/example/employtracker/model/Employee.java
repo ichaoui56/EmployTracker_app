@@ -1,18 +1,22 @@
 package org.example.employtracker.model;
 
-import javax.persistence.*;
-
-
 public class Employee {
 
-    private Long id;
+    private int id;
     private String name;
     private String email;
     private String phone;
     private String department;
     private Double salary;
 
-    public Employee() {}
+    public Employee(int id, String name, String email, String phone, String department, Double salary) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.department = department;
+        this.salary = salary;
+    }
 
     public Employee(String name, String email, String phone, String department, Double salary) {
         this.name = name;
@@ -22,9 +26,13 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Long getId() {return id;}
+    public Employee() {
 
-    public void setId(Long id) {this.id = id;}
+    }
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getName() {return name;}
 
