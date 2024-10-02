@@ -3,23 +3,26 @@ package org.example.employtracker.model;
 public class Employee {
 
     private int id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private String phone;
     private String department;
     private Double salary;
 
-    public Employee(int id, String name, String email, String phone, String department, Double salary) {
+    public Employee(int id, String firstName,String lastName, String email, String phone, String department, Double salary) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.department = department;
         this.salary = salary;
     }
 
-    public Employee(String name, String email, String phone, String department, Double salary) {
-        this.name = name;
+    public Employee( String firstName,String lastName, String email, String phone, String department, Double salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.department = department;
@@ -34,9 +37,13 @@ public class Employee {
 
     public void setId(int id) {this.id = id;}
 
-    public String getName() {return name;}
+    public String getFirstName() {return firstName;}
 
-    public void setName(String name) {this.name = name;}
+    public void setFirstName(String name) {this.firstName = name;}
+
+    public String getLastName() {return lastName;}
+
+    public void setLastName(String name) {this.lastName = name;}
 
     public String getEmail() {return email;}
 
@@ -58,7 +65,8 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + firstName + '\'' +
+                ", name='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", department='" + department + '\'' +

@@ -26,14 +26,17 @@ public class EmployeeController extends HttpServlet {
       String action = request.getParameter("action");
 
       switch (action) {
-         case "showForm":
+         case "addForm":
             showEmployeeForm(request, response);
             break;
          case "showEmployees":
-            listEmployees(request, response);
+            showListEmployees(request, response);
             break;
-         case "edit":
+         case "updateForm":
             showEditForm(request, response);
+            break;
+         case "search":
+            searchEmployees(request, response);
             break;
          default:
             response.sendRedirect("employee?action=showEmployees");
@@ -64,7 +67,7 @@ public class EmployeeController extends HttpServlet {
 
    private void showEmployeeForm(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
-      RequestDispatcher dispatcher = request.getRequestDispatcher("view/addForm.jsp");
+      RequestDispatcher dispatcher = request.getRequestDispatcher("views/addForm.jsp");
       dispatcher.forward(request, response);
    }
 
@@ -72,46 +75,50 @@ public class EmployeeController extends HttpServlet {
       int id = Integer.parseInt(request.getParameter("id"));
       Employee existingEmployee = employeeService.getEmployeeById(id);
       request.setAttribute("employee", existingEmployee);
-      RequestDispatcher dispatcher = request.getRequestDispatcher("editForm.jsp");
+      RequestDispatcher dispatcher = request.getRequestDispatcher("views/updateForm.jsp");
       dispatcher.forward(request, response);
    }
 
+
+   private void showListEmployees(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      List<Employee> employees = employeeService.getAllEmployees();
+      request.setAttribute("employees", employees);
+      RequestDispatcher dispatcher = request.getRequestDispatcher("views/employeesList.jsp");
+      dispatcher.forward(request, response);
+      System.out.println(employees);
+   }
+
+
    private void insertEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String name = request.getParameter("name");
+      String firstName = request.getParameter("first_name");
+      String lastName = request.getParameter("last_name");
       String email = request.getParameter("email");
       String phoneNumber = request.getParameter("phone_number");
       String department = request.getParameter("department");
       Double salary = Double.valueOf(request.getParameter("salary"));
 
-      Employee employee = new Employee(name, email, phoneNumber, department, salary);
+      Employee employee = new Employee(firstName,lastName, email, phoneNumber, department, salary);
       employeeService.addEmployee(employee);
 
       response.sendRedirect("employee?action=showEmployees");
    }
 
    private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      int id = Integer.parseInt(request.getParameter("id"));
+      int id = Integer.parseInt(request.getParameter("employeeId"));
       employeeService.deleteEmployee(id);
       response.sendRedirect("employee?action=showEmployees");
    }
 
-   private void listEmployees(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      List<Employee> employees = employeeService.getAllEmployees();
-      request.setAttribute("employees", employees);
-      RequestDispatcher dispatcher = request.getRequestDispatcher("listEmployees.jsp");
-      dispatcher.forward(request, response);
-      System.out.println(employees);
-   }
-
    private void updateEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
       int id = Integer.parseInt(request.getParameter("id"));
-      String name = request.getParameter("name");
+      String firstName = request.getParameter("first_name");
+      String lastName = request.getParameter("last_name");
       String email = request.getParameter("email");
       String phoneNumber = request.getParameter("phone_number");
       String department = request.getParameter("department");
       Double salary = Double.valueOf(request.getParameter("salary"));
 
-      Employee employee = new Employee(id, name, email, phoneNumber, department, salary);
+      Employee employee = new Employee(id, firstName, lastName, email, phoneNumber, department, salary);
       employeeService.updateEmployee(employee);
 
       response.sendRedirect("employee?action=showEmployees");

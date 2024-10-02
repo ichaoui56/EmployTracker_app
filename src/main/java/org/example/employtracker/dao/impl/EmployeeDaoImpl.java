@@ -5,6 +5,7 @@ import org.example.employtracker.model.Employee;
 import org.example.employtracker.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -94,4 +95,5 @@ public class EmployeeDaoImpl implements IEmployeeDao {
         }
         return employee;
     }
+
 }
