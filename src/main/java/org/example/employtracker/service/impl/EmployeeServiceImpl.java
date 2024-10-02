@@ -4,6 +4,8 @@ import org.example.employtracker.dao.IEmployeeDao;
 import org.example.employtracker.model.Employee;
 import org.example.employtracker.service.IEmployeeService;
 
+import java.util.List;
+
 public class EmployeeServiceImpl implements IEmployeeService {
 
     private final IEmployeeDao employeeDao;
@@ -20,6 +22,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public void deleteEmployee(int id){
         employeeDao.deleteEmployee(id);
+    }
+
+    @Override
+    public List<Employee> getAllEmployees(){
+        return employeeDao.getAllEmployees();
     }
 
 }
