@@ -18,6 +18,21 @@
                 <hr class="line">
             </div>
             <input type="hidden" name="id" value="${employee.id}"/>
+            <c:if test="${not empty errors && isError}">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                        <div class="new-message-box">
+                            <div class="new-message-box-danger">
+                                <div class="info-tab tip-icon-danger" title="error"><i></i></div>
+                                <div class="tip-box-danger">
+                                    <p>${errors}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
             <div class="credit-card-info--form">
                 <div class="input-row">
                     <div class="input_container">

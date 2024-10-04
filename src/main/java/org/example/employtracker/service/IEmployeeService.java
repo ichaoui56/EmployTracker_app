@@ -10,4 +10,7 @@ public interface IEmployeeService {
     List<Employee> getAllEmployees();
     void updateEmployee(Employee employee);
     Employee getEmployeeById(int id);
+    List<Employee> searchEmployees(String query);
+    List<Employee> getEmployeesByDepartment(String department);
+    List<String> getDistinctDepartments();
 }

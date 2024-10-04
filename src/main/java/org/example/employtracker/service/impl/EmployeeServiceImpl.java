@@ -39,4 +39,19 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return employeeDao.selectEmployeeById(id);
     }
 
+    @Override
+    public List<Employee> searchEmployees(String query) {
+        return employeeDao.searchEmployees(query);
+    }
+
+    @Override
+    public List<Employee> getEmployeesByDepartment(String department) {
+        return employeeDao.getEmployeesByDepartment(department);
+    }
+
+    @Override
+    public List<String> getDistinctDepartments() {
+        return employeeDao.getDistinctDepartments();
+    }
+
 }

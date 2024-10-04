@@ -170,8 +170,9 @@ footer a:hover {
 
 /*filter section*/
 .card {
+    position: relative;
     width: 600px;
-    height: 104px;
+    height: 304px;
     padding: 0 15px;
     text-align: center;
     display: flex;
@@ -441,4 +442,138 @@ footer a:hover {
     transform: translate(3px, 3px);
     transition-duration: .3s;
     box-shadow: 2px 2px 0px rgb(236, 0, 32);
+}
+
+/* go back button */
+.button {
+    display: flex;
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+}
+
+.button > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+}
+
+.button:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+}
+
+.button:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+.department-tags {
+    margin-top: 20px;
+}
+
+.filterA {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+.filterBtn {
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 15px;
+    width: fit-content;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.filterBtn:hover {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #292828, inset -4px -4px 12px #b8b1b1;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .filterBtn {
+        flex: 1 1 calc(50% - 10px); /* 2 buttons per row */
+    }
+}
+
+@media (max-width: 400px) {
+    .filterBtn {
+        flex: 1 1 100%; /* 1 button per row */
+    }
+}
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    background: #2b43a5;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #2b43a5;
+    overflow: hidden;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #2b43a5;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #2b43a5;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
 }
