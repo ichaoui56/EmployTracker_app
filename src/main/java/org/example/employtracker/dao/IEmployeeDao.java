@@ -10,4 +10,8 @@ public interface IEmployeeDao {
     List<Employee> getAllEmployees();
     void updateEmployee(Employee employee);
     Employee selectEmployeeById(int id);
+    List<Employee> searchEmployees(String query);
+    List<Employee> getEmployeesByDepartment(String department);
+
+    List<String> getDistinctDepartments();
 }

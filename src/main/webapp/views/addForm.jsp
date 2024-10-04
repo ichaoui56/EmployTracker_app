@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,7 @@
 <body>
 
 <article class="wrapper">
+
   <div class="modal">
     <form class="form" action="employee?action=insert" method="post">
       <div class="separator">
@@ -17,6 +19,23 @@
         <p>Add Employee Form</p>
         <hr class="line">
       </div>
+
+      <c:if test="${not empty errors}">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="new-message-box">
+              <div class="new-message-box-danger">
+                <div class="info-tab tip-icon-danger" title="error"><i></i></div>
+                <div class="tip-box-danger">
+                  <p>${errors}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </c:if>
+
       <div class="credit-card-info--form">
         <div class="input-row">
           <div class="input_container">
